@@ -1,13 +1,18 @@
 package com.herokuappqa.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
     WebDriver driver;
+    JavascriptExecutor js;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
+        js=(JavascriptExecutor) driver;
     }
 
 
@@ -22,4 +27,11 @@ public class BasePage {
             element.sendKeys(text);
         }
     }
+
+    public void clickWithJS(WebElement element, int x,int y) {
+        js.executeScript("window.scrollBy("+ x + "," + y + ")");
+        click(element);
+    }
+
+
 }
