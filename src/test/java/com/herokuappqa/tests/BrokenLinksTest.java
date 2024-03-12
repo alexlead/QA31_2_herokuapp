@@ -12,6 +12,6 @@ public class BrokenLinksTest extends TestBase{
     }
     @Test
     public void isBrokenLinkPresentTest () {
-        new BrokenLinksPage(driver).checkBrokenLinks();
+        new BrokenLinksPage(driver).checkBrokenLinks().checkNumberOfBrokenLinks(2);
     }
 }
